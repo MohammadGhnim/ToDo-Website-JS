@@ -45,14 +45,18 @@ function addTodo(e){
     todoInput.value= ''
 }
 
-function todoToggle(){
+function todoToggle(e){
     console.log('in Toggle')
     const item = e.target
     if (item.classList[1] == 'fa-check'){
         console.log('completed')
+        const taskLi = item.parentElement.parentElement.parentElement
+        taskLi.childNodes[0].classList.toggle('complete')
     }
     else if (item.classList[1] = 'fa-trash'){
         console.log('delete')
+        item.parentElement.parentElement.parentElement.classList.toggle('delete')
+        //taskLi.childNodes[0].classList.toggle('delete')
     }
 }
 
