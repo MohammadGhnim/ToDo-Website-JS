@@ -1,14 +1,77 @@
 body {
     background: #aa4b6b;  /* fallback for old browsers */
     background: -webkit-linear-gradient(to right, #3b8d99, #6b6b83, #aa4b6b);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #3b8d99, #6b6b83, #aa4b6b); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to right, #3b8d99, #6b6b83, #aa4b6b); 
 }
-.complete {
+
+
+.s{
+    margin: 15%;
+}
+
+.todo-items{
+    background-color: white !important;
+    margin-bottom: 5px;
+    width: 245px;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 2px;
+    border-top-left-radius: 2px; 
+}
+.btn{
+    color: rgb(114, 58, 227);
+    background-color: white;
+    border: 0ch;
+    border-color: white;
+}
+.btn:hover{
+    color: rgb(75, 131, 81);
+    background-color: white;
+    border: 0ch;
+    border-color: white;
+}
+.btn:active{
+    color: black !important;
+    background-color: white !important;
+    border: 0ch !important;
+    border-color: white !important;
+}
+.input-group{
+    margin-left: 0px !important;
+}
+.todo-title{
+    font-size: 20px;
+    padding-left: 5px;
+    display: flex;
+    align-items: center;
+}
+.icon, .check{
+    font-size: 20px;
+    padding-left: 5px;
+    padding-right: 5px;
+    color: white;
+    background-color: rgb(110, 108, 235);
+}
+.icon2, .remove{
+    font-size: 20px;
+    padding-left: 5px;
+    padding-right: 5px;
+    color: white;
+    background-color: rgb(255, 0, 0);
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 2px;
+}
+.check:hover, .icon:hover {
+        color:rgb(110, 108, 235) ;
+        background-color: white;
+}
+.remove:hover, .icon2:hover{
+    color: rgb(255, 0, 0);
+    background-color: white;
+}
+.complete-todo{
     text-decoration: line-through;
 }
-.delete {
-    display: none;
-}
-.action-div {
-    float: right;
+.remove-todo{
+    display: none !important;
 }
