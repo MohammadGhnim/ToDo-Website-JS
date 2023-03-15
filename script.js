@@ -1,64 +1,61 @@
-console.log('welcome')
-
-const todoInput = document.querySelector('.todo-input')
-const todoBtn = document.querySelector('.todo-btn')
+// query selector
+const todoInput = document.querySelector(".todo-input")
+const todoBtn = document.querySelector(".todo-btn")
 const todoResult = document.querySelector('.todo-result')
-const todoAction = document.querySelector('.action.div')
-
-
-
 
 function addTodo(e){
     e.preventDefault();
-    const todoLi = document.createElement("li")
-    todoLi.classList.add('border')
-    todoLi.classList.add('py-2')
-    todoLi.classList.add('px-4')
-    todoLi.classList.add('my-1')
+    // add todo-item div
+    const todoDiv = document.createElement("div")
+    todoDiv.classList.add('todo-items')
+    todoDiv.classList.add('d-flex')
 
+    // add h3 , data:h3
+    const newTodo = document.createElement('h3')
+    newTodo.innerText = todoInput.value ;
+    newTodo.classList.add('me-auto')
+    newTodo.classList.add('pe-5')
+    newTodo.classList.add('todo-title')
+    todoDiv.appendChild(newTodo)
 
-    const todoTitle = document.createElement('h4') 
-    todoTitle.classList.add('d-inline-block')
-    todoTitle.classList.add('me-5')
-    todoTitle.innerText = todoInput.value
-    todoLi.appendChild(todoTitle)
+    // remove data from input
+    todoInput.value=''
 
-    const todoAction = document.createElement('div')
-    todoAction.classList.add('action-div')
-    todoAction.classList.add('d-inline-block')
+    // creat buttons div
+    const buttonDiv = document.createElement('div')
+    todoDiv.appendChild(buttonDiv)
 
-    const btncomplete = document.createElement('button')
-    btncomplete.classList.add('btn')
-    btncomplete.classList.add('btn-primary')
-    btncomplete.innerHTML = '<i class="fa-solid fa-check"></i>'
-    todoAction.appendChild(btncomplete)
+    // add complete , delete buttons
+    const completeBtn = document.createElement('button')
+    completeBtn.innerHTML = `<i class="fa-regular fa-square-check todo-check icon "></i>`
+    completeBtn.classList.add('check')
+    buttonDiv.appendChild(completeBtn)
 
+    const deleteBtn = document.createElement('button')
+    deleteBtn.innerHTML = `<i class="fa-solid fa-trash todo-remove icon2"></i>`
+    deleteBtn.classList.add('remove')
+    buttonDiv.appendChild(deleteBtn)
+    
+    // show result
+    todoResult.appendChild(todoDiv)
 
-    const btndelete = document.createElement('button')
-    btndelete.classList.add('btn')
-    btndelete.classList.add('btn-danger')
-    btndelete.innerHTML = '<i class="fa-solid fa-trash"></i>'
-    todoAction.appendChild(btndelete)
-
-    todoLi.appendChild(todoAction)
-    todoResult.appendChild(todoLi)
-    todoInput.value= ''
 }
 
-function todoToggle(e){
-    console.log('in Toggle')
-    const item = e.target
-    if (item.classList[1] == 'fa-check'){
-        console.log('completed')
-        const taskLi = item.parentElement.parentElement.parentElement
-        taskLi.childNodes[0].classList.toggle('complete')
-    }
-    else if (item.classList[1] = 'fa-trash'){
-        console.log('delete')
-        item.parentElement.parentElement.parentElement.classList.toggle('delete')
-        //taskLi.childNodes[0].classList.toggle('delete')
-    }
+function toggleToDo(e){
+        const item = e.target
+       // console.log(item.classList)
+        if (item.classList[3] == 'icon'){
+            const btn_div = item.parentElement.parentElement.parentElement
+            btn_div.childNodes[0].classList.toggle('complete-todo')
+        }
+        
+        if (item.classList[3] == "icon2"){
+            const btn_div = item.parentElement.parentElement.parentElement
+            btn_div.childNodes[0].classList.add('remove-todo')
+            btn_div.childNodes[1].classList.add('remove-todo')
+        }
 }
 
-todoBtn.addEventListener('click', addTodo);
-todoResult.addEventListener('click', todoToggle)
+
+todoBtn.addEventListener('click',addTodo)
+todoResult.addEventListener('click',toggleToDo)
