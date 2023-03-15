@@ -1,4 +1,4 @@
-# ToDo-Website with JavaScript ( it's not finished ).
+# ToDo-Website with JavaScript.
 
 Live Demo:
 
